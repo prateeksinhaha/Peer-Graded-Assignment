@@ -64,8 +64,12 @@ names(tidyData)<-gsub("gravity", "Gravity", names(tidyData))
 #variable for each activity and each subject was 
 #created.
 
+finalData <- tidyData %>%
+        group_by(subject, activity) %>%
+        summarise_all(funs(mean))
+write.table(finalData, "finalData.txt", row.name=FALSE)
 
-str(finalData)
+
 
                         
                                                          
